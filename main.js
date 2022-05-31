@@ -35,16 +35,21 @@ setbutton.addEventListener("click", () => {
   for (let i = 1; i <= cellNumber; i++) {
     const num = getUniqueRandomInt(1, cellNumber, numList);
     numList.push(num);
-    const square = createGridSquare(cellPerSide);
+    const square = createGridSquare(cellPerSide, num);
     grid.append(square);
+    square.addEventListener("click", () => {});
   }
 });
 
-function createGridSquare(cell) {
+function createGridSquare(cell, num) {
+  const type = num % 2 === 0 ? "even" : "odd";
   const node = document.createElement("div");
   node.style.width = `calc(100%/${cell})`;
   node.style.height = `calc(100%/${cell})`;
-  node.classList.add("square");
+  node.classList.add("square", `square-${type}`);
+  const span = document.createElement("span");
+  span.append(num);
+  node.append(span);
   return node;
 }
 
@@ -52,6 +57,6 @@ function getUniqueRandomInt(min, max, list) {
   let num = 0;
   do {
     num = Math.floor(Math.random() * (max - min + 1) + min);
-  } while (list.include(num));
+  } while (list.includes(num));
   return num;
 }

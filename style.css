@@ -35,3 +35,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.colorgreen {
+  background-color: green;
+}
+.colorred {
+  background-color: red;
+}
