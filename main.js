@@ -36,8 +36,10 @@ setbutton.addEventListener("click", () => {
     const num = getUniqueRandomInt(1, cellNumber, numList);
     numList.push(num);
     const square = createGridSquare(cellPerSide, num);
+    square.addEventListener("click", function () {
+      this.classList.add("clicked");
+    });
     grid.append(square);
-    square.addEventListener("click", () => {});
   }
 });
 
